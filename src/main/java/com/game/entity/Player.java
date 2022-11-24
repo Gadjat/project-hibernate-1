@@ -3,11 +3,13 @@ package com.game.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
-@NamedQuery(name = "getAllCount", query = "from Player")
+@NamedQuery(name = "getAllCount", query = "select count(p)from Player p")
 @Entity
 @Table(schema = "rpg", name = "player")
 public class Player {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
     @Column(length = 12,nullable = false)
     private String name;
